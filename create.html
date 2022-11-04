@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create - Instagram</title>
+    <link
+      data-default-icon="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"
+      rel="icon"
+      sizes="192x192"
+      href="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/navbar.css" />
+    <link rel="stylesheet" href="./css/create.css">
+  </head>
+  <body>
+    <section class="navbar"></section>
+    <section class=" addPost">
+      <img id="img">
+        <div class="addPost_head">Create New Post
+        </div>
+        <div class="form">
+          <input type="file" class="upload_img" accept="image/*" required> 
+          <input type="text" class="id" placeholder="Enter Your ID:" required>
+          <input type="text" class="caption" placeholder="Enter Caption:" required>
+          <input type="button" value="Create Post" class="create_btn" disabled>
+        </div>
+    </section>
+  </body>
+
+  <script type="module" src="./js/create.js"></script>
+</html>

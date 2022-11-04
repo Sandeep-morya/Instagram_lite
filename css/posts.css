@@ -1,0 +1,79 @@
+.posts{
+    width: 30%;
+    margin: auto;
+    margin-top: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.card,.card *{
+    width: 100%;
+}
+.card{
+    background-color: rgba(250,250,250);
+    box-shadow: 0 0 10px gray;
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+}
+img{
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+.modify{
+    width: min-content;
+    position: absolute;
+    right: 0;
+}
+.modify i{
+    color: white;
+    margin: 15px;
+    text-shadow: 0 0 5px black,0px 0px 5px black;
+    font-size: 20px;
+    cursor: pointer;
+}
+.modify i:hover{
+    text-shadow: 0 0 10px black;;
+}
+.modify .setting{
+    display: none;
+}
+.modify .edit{
+    display: none;
+}
+.modify .trash{
+    display: none;
+}
+.card:hover>.modify>.setting{
+    display: block;
+}
+.caption_div{
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+.caption-result{
+    flex-grow: 1;
+    font-size: 16px;
+    color: black;
+    border: none;
+    outline: none;
+    font-style: oblique;
+    font-weight: bold;
+}
+.update{
+    display: none;
+    width: min-content;
+    border-radius: 5rem;
+    background: linear-gradient(90deg,red,rgb(255, 0, 106));
+    color:white;
+    border: none;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 7px;
+}

@@ -1,0 +1,12 @@
+body{
+    width: 100vw;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow-X: hidden;
+    background-color: rgb(241, 240, 240);
+}
+svg{
+    height: 40px !important;
+    cursor: pointer !important;
+}
