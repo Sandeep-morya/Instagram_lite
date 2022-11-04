@@ -1,5 +1,5 @@
 import { navbar,json_url } from "../components/variables.js";
-import {homepage,showModification,hideModification,caption_modify,hide_caption_modify} from "../components/methods.js"
+import {homepage,showModification,hideModification,caption_modify,hide_caption_modify,operation} from "../components/methods.js"
 
 let navbar_sec=document.querySelector('.navbar');
 navbar_sec.innerHTML=navbar;
@@ -79,19 +79,25 @@ getPosts();
 
 async function updateData(id,data){
     let newCaption={caption:data}
-    await fetch(`${json_url}/${id}`,{
+    let temp=await fetch(`${json_url}/${id}`,{
         method:'PATCH',
         body: JSON.stringify(newCaption),
         headers : {
             'Content-Type' : 'application/json'
         }
     });
+    if(temp){
+        operation('Update Post')
+    }
 }
 
 async function deleteData(id){
-    await fetch(`${json_url}/${id}`,{
+    let temp=await fetch(`${json_url}/${id}`,{
         method:'DELETE',
     });
+    if(temp){
+        operation('Delete Post')
+    }
 }
 
 

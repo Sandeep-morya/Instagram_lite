@@ -1,5 +1,5 @@
 import { navbar,url,json_url } from "../components/variables.js";
-import { homepage } from "../components/methods.js";
+import { homepage,operation } from "../components/methods.js";
 
 let navbar_sec = document.querySelector(".navbar");
 navbar_sec.innerHTML = navbar;
@@ -50,13 +50,16 @@ let handleImage = async (file) => {
 
 
 let createPost = async (data) => {
-  await fetch(json_url, {
+  let temp=await fetch(json_url, {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
     },
   });
+  if(temp){
+    operation('Create_Post');
+  }
 };
 
 

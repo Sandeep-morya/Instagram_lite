@@ -37,4 +37,4 @@ export const navbar=`<div class="navcontent"><div class="logo_div">
 </div></div>`
 
 export const url = `https://api.imgbb.com/1/upload?key=7eca1e2bc67d07e1833bb1b0e27f7a58`;
-export const json_url = `http://localhost:3000/posts`;
+export const json_url = `https://cryptic-caverns-87011.herokuapp.com/posts`;
