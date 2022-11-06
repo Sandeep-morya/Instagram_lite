@@ -1,7 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 body{
     background: rgb(250,250,250);
-}.auth_div{
+    margin: 0;
+    overflow: hidden;
+}
+.loader{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top:0;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader img{
+    height: 100%;
+}
+.auth_div{
     width: 60%;
     aspect-ratio: 3/2;
     margin: auto;

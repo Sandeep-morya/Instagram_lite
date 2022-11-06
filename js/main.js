@@ -137,6 +137,7 @@ let num=localStorage.getItem('num')||1
 showPage(num);
 getPosts();
 
+//---> clicked button visibility
 function manageBtn(current){
     let btn=document.querySelectorAll('.btn');
     for(let i=0; i<btn.length; i++){
