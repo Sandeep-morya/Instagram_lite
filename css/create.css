@@ -1,27 +1,36 @@
+.manage_posts{
+  display: flex;
+  width: 90%;
+  margin: auto;
+  align-items: flex-start;
+  margin-top: 100px;
+  gap: 20px;
+}
+.manage_posts>*{
+  box-shadow: 0 0 10px grey;
+}
 .addPost {
-  width: 400px;
-  aspect-ratio: 10/11;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 1);
-  position: absolute;
-  background-color: white;
-  top: 100px;
-  border-radius: 1rem;
+  flex: 1;
+  border-radius: 0.5rem;
   overflow: hidden;
+  position: relative;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
-  transform: translateX(120%);
 }
 .addPost_head {
+  margin-bottom: 220px;
   width: 100%;
   padding: 10px;
   font-size: 25px;
   background: white;
   text-align: center;
 }
+
 .form {
   width: 100%;
   height: 90%;
   display: flex;
+  gap:20px;
   /* background: inherit; */
   flex-direction: column;
   justify-content: center;
@@ -33,10 +42,9 @@
   font-size: 16px;
   padding: 15px;
   border: none;
-  outline: none;
   color: grey;
   font-weight: bold;
-  background: rgb(235, 235, 235);
+  background: rgb(255, 255, 255);
   border-radius: 0.4rem;
 }
 .create_btn {
@@ -47,11 +55,12 @@
     rgb(0, 140, 255)
   );
   color: white;
+  margin-bottom: 30px;
 }
 #img{
     position: absolute;
     z-index: -1;
-    width: inherit;
+    width: 100%;
     height: 100%;
     object-fit: cover;
 }

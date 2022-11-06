@@ -14,20 +14,38 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/navbar.css" />
     <link rel="stylesheet" href="./css/create.css">
+    <link rel="stylesheet" href="./css/table.css">
   </head>
   <body>
     <section class="navbar"></section>
-    <section class=" addPost">
-      <img id="img">
-        <div class="addPost_head">Create New Post
-        </div>
-        <div class="form">
-          <input type="file" class="upload_img" accept="image/*" required> 
-          <input type="text" class="id" placeholder="Enter Your ID:" required>
-          <input type="text" class="caption" placeholder="Enter Caption:" required>
-          <input type="button" value="Create Post" class="create_btn" disabled>
-        </div>
+    <section class="manage_posts">
+      <div class=" addPost">
+        <img id="img">
+          <div class="addPost_head">Create New Post
+          </div>
+          <div class="form">
+            <input type="file" class="upload_img" accept="image/*" required> 
+            <input type="text" class="caption" placeholder="Enter Caption:" required>
+            <input type="button" value="Create Post" class="create_btn" disabled>
+          </div> 
+      </div>
+      
+      <fieldset>
+        <legend>Recycle Bin</legend>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Image-Url</th>
+              <th>Caption</th>
+              <th>Restore</th>
+            </tr>
+          </thead>
+          <tbody class="tbody"><!--data to be appended--></tbody>
+        </table>
+      </fieldset>
     </section>
+    
   </body>
 
   <script type="module" src="./js/create.js"></script>

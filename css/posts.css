@@ -77,3 +77,18 @@ img{
     font-weight: bold;
     padding: 7px;
 }
+
+.btns{
+    width: 30%;
+    margin: 20px auto;
+}
+.btns button{
+    border-color: rgba(73, 72, 72, 0.733);
+    padding: 10px 14px;
+    border-radius: 2rem;
+    font-weight: bold;
+    border-width: 1px;
+    font-family: 'Fira Code';
+    margin: 10px;
+    
+}

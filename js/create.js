@@ -9,8 +9,8 @@ let logo = document.querySelector(".logo");
 logo.onclick = () => homepage();
 let home = document.querySelector(".home");
 home.onclick = () => homepage();
-
 //--------------------------- code start here --------->
+let postArray=JSON.parse(localStorage.getItem('posts'))||[];
 
 const back_img = document.querySelector("#img");
 const upload_img = document.querySelector(".upload_img");
@@ -18,7 +18,7 @@ const create_btn = document.querySelector(".create_btn");
 let image_url;
 
 create_btn.addEventListener("click", () => {
-  let id = document.querySelector(".id").value;
+  let id = Math.floor(Math.random()*192837567891234)
   let caption = document.querySelector(".caption").value;
   let data = { id, caption, image_url };
   createPost(data);
@@ -63,3 +63,42 @@ let createPost = async (data) => {
 };
 
 
+//------------------ Recycle Part ----------------->>
+const tbody=document.querySelector('.tbody');
+const user=document.querySelector('.user');
+user.textContent=localStorage.getItem('name')|| '+';
+displayTable(postArray);
+function displayTable(array){
+  tbody.innerHTML=null;
+  array.forEach((e,i) => {
+    let tr=document.createElement('tr');
+    let id=document.createElement('td');
+    let image_url=document.createElement('td');
+    let caption=document.createElement('td');
+    let restore=document.createElement('td');
+
+    id.textContent=e.id;
+    image_url.textContent=e.image_url;
+    caption.textContent=e.caption;
+    restore.textContent='Create';
+    restore.className='restore'
+    restore.onclick=(el)=>{
+      let data = { 
+        id:id.textContent, 
+        caption:caption.textContent, 
+        image_url:image_url.textContent 
+      };
+      createPost(data);
+      deleteData(i)
+      el.target.parentNode.remove();
+    }
+    tr.append(id,image_url,caption,restore);
+    tbody.append(tr);
+  });
+}
+
+function deleteData(i){
+  postArray.splice(i,1);
+  localStorage.setItem('posts',JSON.stringify(postArray));
+  displayTable(postArray);
+}

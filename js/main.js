@@ -9,13 +9,17 @@ let logo=document.querySelector('.logo');
 logo.onclick=()=>homepage();
 let home=document.querySelector('.home');
 home.onclick=()=>homepage();
+let user=document.querySelector('.user');
+user.onclick=()=>location.assign('./index.html');
 //--------------------------- code start here --------->
-
 const posts=document.querySelector('.posts');
+user.textContent=localStorage.getItem('name')|| '+'
 
+let postArray=JSON.parse(localStorage.getItem('posts'))||[];
+//---> boilerplate for  main append
 const appendPost=(array)=>{
     posts.innerHTML=null;
-    array.forEach(el => {
+    array.forEach(({id,image_url,caption}) => {
 
     let card=document.createElement('div');
     let modify=document.createElement('div');
@@ -38,8 +42,8 @@ const appendPost=(array)=>{
     edit_icon.className='fa-solid fa-pen-to-square edit';
 
     //--->Give values
-    img.src=el.image_url;
-    span.textContent=el.caption;
+    img.src=image_url;
+    span.textContent=caption;
     update.textContent='update';
 
     //---->functions
@@ -55,13 +59,15 @@ const appendPost=(array)=>{
     edit_icon.onclick=()=>caption_modify(span,update);
     update.onclick=()=>{
         text=span.textContent;
-        updateData(el.id,text);
+        updateData(id,text);
     }
     delete_icon.onclick=()=>{
-        deleteData(el.id)
+        deleteData(id);
+        let post= new Post(id,image_url,caption);
+        postArray.push(post)
+        localStorage.setItem('posts',JSON.stringify(postArray))
     }
     
-
     //----->append
     modify.append(setting_icon,edit_icon,delete_icon);
     caption_div.append(span,update);
@@ -70,13 +76,14 @@ const appendPost=(array)=>{
     });
 
 }
+//---> create buttons method
 const getPosts=async ()=>{
     let promise=await fetch(json_url)
     let response=await promise.json();
-    appendPost(response)
+    createBtns(response);
 }
-getPosts();
 
+//---> Update/ PATCH request
 async function updateData(id,data){
     let newCaption={caption:data}
     let temp=await fetch(`${json_url}/${id}`,{
@@ -90,7 +97,7 @@ async function updateData(id,data){
         operation('Update Post')
     }
 }
-
+//---> DELETE request
 async function deleteData(id){
     let temp=await fetch(`${json_url}/${id}`,{
         method:'DELETE',
@@ -101,3 +108,51 @@ async function deleteData(id){
 }
 
 
+//---> Pagination 
+const btns=document.querySelector('.btns');
+//----> creation method of button
+function createBtns(array){
+    let x=array.length;
+    for(let i=1; i<=Math.ceil(x/2); i++){
+        let btn=document.createElement('button');
+        btn.textContent=i;
+        btn.className=`btn`;
+        btns.append(btn);
+        btn.onclick=()=>{
+            showPage(i);
+            manageBtn(i-1);
+            localStorage.setItem('num',i)
+        }
+    }
+}
+//---> showing results 
+async function showPage(n){
+    let temp=await fetch(`${json_url}?_page=${n}&_limit=2`);
+    let response=await temp.json();
+    appendPost(response)
+}
+
+//---> core stuff
+let num=localStorage.getItem('num')||1
+showPage(num);
+getPosts();
+
+function manageBtn(current){
+    let btn=document.querySelectorAll('.btn');
+    for(let i=0; i<btn.length; i++){
+        if(i==current){
+            btn[i].setAttribute('Disabled',true)
+        }else{
+            btn[i].removeAttribute('Disabled')
+        }
+    }
+}
+
+//----> Class
+class Post{
+    constructor(id,image_url,caption){
+        this.id=id;
+        this.image_url=image_url;
+        this.caption=caption;
+    }
+}

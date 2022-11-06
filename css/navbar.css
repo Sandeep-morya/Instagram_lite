@@ -73,8 +73,16 @@
 .user {
   width: 40px;
   aspect-ratio: 1;
-  border: 1px solid red;
   border-radius: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  background: linear-gradient(90deg,red,rgb(255, 0, 106));
+  color: white;
+  font-family: 'Fira Code';
+  text-transform: uppercase;
+  cursor: pointer;
 }
 .icons {
   width: 30%;
